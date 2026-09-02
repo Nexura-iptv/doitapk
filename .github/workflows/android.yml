@@ -31,6 +31,14 @@ jobs:
         if [ -d "novaai" ]; then
           cd novaai
         fi
+        
+        # Eksik .env ve .env.example dosyalarını otomatik oluştur
+        touch .env.example
+        touch .env
+        echo "GROQ_API_KEY=" > .env.example
+        echo "GROQ_API_KEY=" > .env
+        
+        # APK Derleme
         gradle assembleDebug --stacktrace
 
     - name: Upload APK Artifact
