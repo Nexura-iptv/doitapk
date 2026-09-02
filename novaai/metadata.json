@@ -1,0 +1,6 @@
+{
+  "name": "NovaAI",
+  "description": "NovaAI çok modlu sohbet asistanı. Qwen 3.6 27B, görsel analizi, düşünme filtreleme ve özel üyelik planları entegrasyonu.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

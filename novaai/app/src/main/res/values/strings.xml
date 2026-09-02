@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">NovaAI</string>
+    <string name="welcome_title">NovaAI Size Nasıl Yardımcı Olabilir?</string>
+    <string name="welcome_subtitle">Qwen 3.6 27B &amp; Groq Çok Modlu Zeka</string>
+    <string name="input_hint">NovaAI\'a bir şeyler sorun veya görsel ekleyin…</string>
+    <string name="sign_in">Giriş Yap</string>
+    <string name="user_name">Kullanıcı Adı</string>
+    <string name="email_address">E-posta Adresi</string>
+    <string name="guest_user">Misafir Kullanıcı</string>
+    <string name="sign_out">Çıkış Yap</string>
+    <string name="new_chat">Yeni Sohbet</string>
+    <string name="chat_history">Sohbet Geçmişi</string>
+    <string name="model_selector">Model Seçimi</string>
+    <string name="delete_chat">Sohbeti Sil</string>
+    <string name="no_messages">Henüz sohbet geçmişi yok.</string>
+    <string name="settings">Ayarlar</string>
+    <string name="copy_text">Metni kopyala</string>
+    <string name="text_copied">Panoya kopyalandı</string>
+</resources>
