@@ -32,20 +32,19 @@ jobs:
           cd novaai
         fi
         
-        # 1. Eksik .env dosyalarını tırnaklı String olarak oluştur
-        touch .env.example .env
-        echo 'GROQ_API_KEY=""' > .env.example
-        echo 'GROQ_API_KEY=""' > .env
+        # 1. .env dosyasına geçerli bir dummy anahtar yaz (BuildConfig String syntax hatasını engeller)
+        printf "GROQ_API_KEY=gsk_default_placeholder_key_here\n" > .env.example
+        printf "GROQ_API_KEY=gsk_default_placeholder_key_here\n" > .env
         
-        # 2. debug.keystore dosyasını oluştur
+        # 2. debug.keystore oluştur
         if [ -f "debug.keystore.base64" ]; then
           base64 -d debug.keystore.base64 > debug.keystore
         else
           keytool -genkey -v -keystore debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
         fi
         
-        # 3. APK Derleme
-        gradle assembleDebug --stacktrace
+        # 3. Önbelleği temizleyerek APK derle
+        gradle clean assembleDebug --no-build-cache --stacktrace
 
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
