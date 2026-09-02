@@ -32,13 +32,19 @@ jobs:
           cd novaai
         fi
         
-        # Eksik .env ve .env.example dosyalarını otomatik oluştur
-        touch .env.example
-        touch .env
+        # 1. Eksik .env dosyalarını oluştur
+        touch .env.example .env
         echo "GROQ_API_KEY=" > .env.example
         echo "GROQ_API_KEY=" > .env
         
-        # APK Derleme
+        # 2. debug.keystore dosyasını proje dizininde oluştur
+        if [ -f "debug.keystore.base64" ]; then
+          base64 -d debug.keystore.base64 > debug.keystore
+        else
+          keytool -genkey -v -keystore debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
+        fi
+        
+        # 3. APK Derleme
         gradle assembleDebug --stacktrace
 
     - name: Upload APK Artifact
