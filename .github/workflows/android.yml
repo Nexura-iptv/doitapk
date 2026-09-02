@@ -21,21 +21,16 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Setup Gradle 8.11.1
+    - name: Setup Gradle 9.3.1
       uses: gradle/actions/setup-gradle@v4
       with:
-        gradle-version: '8.11.1'
+        gradle-version: '9.3.1'
 
     - name: Build NovaAI APK
       run: |
-        # novaai klasörüne geç
         if [ -d "novaai" ]; then
           cd novaai
         fi
-        
-        echo "Current Directory: $(pwd)"
-        
-        # APK Derleme Komutu
         gradle assembleDebug --stacktrace
 
     - name: Upload APK Artifact
